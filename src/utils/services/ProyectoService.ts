@@ -12,7 +12,7 @@ export const ProyectoService = {
       throw error;
     }
   },
-  store: async (values: Proyecto) => {
+  store: async (values: FormData) => {
     try {
       const response = await axiosClient.post("/proyectos", values);
       return response;

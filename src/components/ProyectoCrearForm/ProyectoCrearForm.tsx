@@ -4,6 +4,7 @@ import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";
 import { useProyectoCrearForm } from "./ProyectoCrearForm.hook";
 import { SharedButton } from "../SharedButton/SharedButton";
+import Dropzone from "../Dropzone/Dropzone";
 
 export const ProyectoCrearForm = () => {
   const { defaultValues, validationSchema, guardarProyecto, loading } =
@@ -15,26 +16,18 @@ export const ProyectoCrearForm = () => {
         validationSchema={validationSchema}
         enableReinitialize={true}
         onSubmit={(values) => {
+          console.log(values);
           guardarProyecto(values);
         }}
       >
         <Form>
           <Card className="px-5">
             {/* <CardTitle className="text-2xl">Expediente técnico</CardTitle> */}
-            <div className="grid grid-cols-4 gap-2">
-              <div className="flex flex-col gap-2">
-                <p>No. De Obra</p>
-                <Field as={Input} name="clave" placeholder="No. De Obra" />
-                <ErrorMessage
-                  name="clave"
-                  component="span"
-                  className="text-red-500 text-sm"
-                />
-              </div>
+            <div className="grid grid-cols-2 gap-2">
               <div className="flex flex-col gap-2">
                 <p>Nombre de la obra/acción</p>
                 <Field name="nombre_obra">
-                  {({ field, form }) => (
+                  {({ field, form }: { field: any; form: any }) => (
                     <Textarea
                       {...field}
                       placeholder="Nombre de la obra/acción"
@@ -49,6 +42,32 @@ export const ProyectoCrearForm = () => {
                 </Field>
                 <ErrorMessage
                   name="nombre_obra"
+                  component="span"
+                  className="text-red-500 text-sm"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <p>No. De Obra</p>
+                <Field as={Input} name="clave" placeholder="No. De Obra" />
+                <ErrorMessage
+                  name="clave"
+                  component="span"
+                  className="text-red-500 text-sm"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <p>Archivo</p>
+                <Field name="archivos">
+                  {({ field, form }: { field: any; form: any }) => (
+                    <Dropzone
+                      set={(archivos: any) => {
+                        form.setFieldValue(field.name, archivos);
+                      }}
+                    />
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="archivos"
                   component="span"
                   className="text-red-500 text-sm"
                 />

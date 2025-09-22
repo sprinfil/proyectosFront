@@ -51,6 +51,7 @@ export const useProyectosForm = () => {
     beneficiarios_mujeres: 0,
     beneficiarios_indigenas: 0,
     beneficiarios_afromexicana: 0,
+    adjuntos: [],
   });
 
   const validationSchema = Yup.object({

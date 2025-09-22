@@ -50,5 +50,6 @@ export const createProyectoAdapter = (apiResponse: any) => {
     beneficiarios_afromexicana: Number(
       expediente.beneficiarios_afromexicana || 0
     ),
+    adjuntos: apiResponse?.adjuntos,
   };
 };

@@ -706,11 +706,27 @@ export const ProyectosForm = () => {
                 </div>
               </Card>
 
+              <Card className="px-5">
+                <CardTitle className="text-2xl">Archivos</CardTitle>
+                {defaultValues?.adjuntos?.map((adjunto, index) => (
+                  <>
+                    <a
+                      className="text-blue-500 hover:underline"
+                      href={
+                        import.meta.env.VITE_BASE_URL + "/storage/" + adjunto?.url
+                      }
+                    >
+                      {" "}
+                      <p key={index}>{adjunto?.archivo_name}</p>
+                    </a>
+                  </>
+                ))}
+              </Card>
               {/* <Button type="submit" disabled={loading}>
                 Guardar
               </Button> */}
 
-              <SharedButton texto={"Guardar"} loading={loading} type="submit"/>
+              <SharedButton texto={"Guardar"} loading={loading} type="submit" />
             </div>
           </Form>
         )}

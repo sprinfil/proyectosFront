@@ -41,4 +41,5 @@ export type Proyecto = {
   beneficiarios_mujeres?: number;
   beneficiarios_indigenas?: number;
   beneficiarios_afromexicana?: number;
+  archivos?: [];
 };
