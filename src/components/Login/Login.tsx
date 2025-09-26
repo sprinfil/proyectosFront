@@ -3,11 +3,13 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { SharedButton } from "../SharedButton/SharedButton";
 import { Card } from "../ui/card";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex min-h-full flex-col items-center justify-center px-6 py-12 lg:px-8">
-      <Card className="w-[500px] py-5 px-10">
+      <Card className="w-[500px] py-5 px-10 flex flex-col ">
         <div className="">
           <img
             src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
@@ -20,37 +22,41 @@ export const Login = () => {
         </div>
 
         <div className="mt-10 ">
-          <form action="#" method="POST" className="space-y-6">
-            <div>
+          <div>
+            <label
+              for="email"
+              className="block text-sm/6 font-medium text-gray-900"
+            >
+              Nombre de usuario
+            </label>
+            <div className="mt-2">
+              <Input placeholder="Nombre de usuario" />
+            </div>
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between mt-5">
               <label
-                for="email"
+                for="password"
                 className="block text-sm/6 font-medium text-gray-900"
               >
-                Nombre de usuario
+                Contraseña
               </label>
-              <div className="mt-2">
-                <Input placeholder="Nombre de usuario" />
-              </div>
             </div>
+            <div className="mt-2">
+              <Input placeholder="Constraseña" />
+            </div>
+          </div>
 
-            <div>
-              <div className="flex items-center justify-between">
-                <label
-                  for="password"
-                  className="block text-sm/6 font-medium text-gray-900"
-                >
-                  Contraseña
-                </label>
-              </div>
-              <div className="mt-2">
-                <Input placeholder="Constraseña" />
-              </div>
-            </div>
-
-            <div>
-              <SharedButton texto={"Iniciar Sesión"} className="w-full" />
-            </div>
-          </form>
+          <div>
+            <SharedButton
+              texto={"Iniciar Sesión"}
+              className="w-full mt-5"
+              onClick={() => {
+                navigate("/proyectos");
+              }}
+            />
+          </div>
 
           {/* <p className="mt-10 text-center text-sm/6 text-gray-500">
       Not a member?
