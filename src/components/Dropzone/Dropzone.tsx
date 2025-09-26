@@ -2,8 +2,8 @@ import { Trash2Icon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-const Dropzone = ({ set }) => {
-  const [archivos, set_archivos] = useState([]);
+const Dropzone = ({ set, archivos, set_archivos }) => {
+  // const [archivos, set_archivos] = useState([]);
 
   const onDrop = (acceptedFiles: any) => {
     // Aquí puedes manejar los archivos que fueron soltados

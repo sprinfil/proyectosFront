@@ -3,23 +3,35 @@ import { ProyectosTableScreen } from "../screens/Proyectos/ProyectosTable/Proyec
 import { CrearProyectoScreen } from "../screens/Proyectos/CrearProyecto/CrearProyecto.screen";
 import { DefaultLayout } from "../components/DefaultLayout/DefaultLayout";
 import { VerProyecto } from "../screens/Proyectos/VerProyecto/VerProyecto.screen";
+import { AuthLayout } from "../components/AuthLayout/AuthLayout";
+import { Login } from "../components/Login/Login";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <DefaultLayout />,
+    element: <AuthLayout />,
     children: [
       {
-        path: "/",
-        element: <ProyectosTableScreen />,
+        index: true,
+        element: <Login />,
       },
       {
-        path: "/crearProyecto",
-        element: <CrearProyectoScreen />,
-      },
-      {
-        path: "/verProyecto/:id",
-        element: <VerProyecto />,
+        path: "/proyectos",
+        element: <DefaultLayout />,
+        children: [
+          {
+            index: true,
+            element: <ProyectosTableScreen />,
+          },
+          {
+            path: "crearProyecto",
+            element: <CrearProyectoScreen />,
+          },
+          {
+            path: "verProyecto/:id",
+            element: <VerProyecto />,
+          },
+        ],
       },
     ],
   },

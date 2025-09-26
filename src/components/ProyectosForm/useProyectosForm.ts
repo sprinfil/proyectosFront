@@ -9,6 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { createProyectoAdapter } from "../../utils/adapters/ProyectoAdapter";
 
 export const useProyectosForm = () => {
+    const [archivosTemporales, setArchivosTemporales] = useState([]);
   const [defaultValues, setDefaultValues] = useState({
     nombre: "",
     estatus: "",
@@ -51,7 +52,7 @@ export const useProyectosForm = () => {
     beneficiarios_mujeres: 0,
     beneficiarios_indigenas: 0,
     beneficiarios_afromexicana: 0,
-    adjuntos: [],
+    archivos: [],
   });
 
   const validationSchema = Yup.object({
@@ -59,7 +60,7 @@ export const useProyectosForm = () => {
     estatus: Yup.string(),
     nombre_obra: Yup.string().required("El nombre de la obra es obligatorio"),
     nombre_programa: Yup.string(),
-    clave: Yup.string().required("El número de obra es obligatorio"),
+    clave: Yup.string(),
     ubicacion: Yup.string(),
     problematica: Yup.string(),
     fuente_recurso: Yup.string(),
@@ -96,33 +97,59 @@ export const useProyectosForm = () => {
     beneficiarios_mujeres: Yup.number(),
     beneficiarios_indigenas: Yup.number(),
     beneficiarios_afromexicana: Yup.number(),
+    archivos: Yup.mixed().optional(),
   });
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [loadingGuardarProyecto, setLoadingGuardarProyecto] = useState(false);
   const params = useParams();
 
   const guardarProyecto = async (values: Proyecto) => {
     if (params?.id) {
+      const formData = new FormData();
+
+      Object.entries(values).forEach(([key, value]) => {
+        if (value === undefined || value === null) return;
+
+        if (key === "archivos" && Array.isArray(value)) {
+          value.forEach((file) => {
+            if (file instanceof File) {
+              formData.append("archivos[]", file);
+            }
+          });
+        } else if (value instanceof File) {
+          formData.append(key, value);
+        } else if (Array.isArray(value)) {
+          value.forEach((v, i) => {
+            formData.append(`${key}[${i}]`, String(v));
+          });
+        } else {
+          formData.append(key, String(value));
+        }
+      });
+
       try {
-        setLoading(true);
-        const response = await ProyectoService.update(params?.id, values);
-        toast.success("Registro Modificado");
+        setLoadingGuardarProyecto(true);
+        const response = await ProyectoService.updatePost(params?.id, formData);
+        setDefaultValues(createProyectoAdapter(response?.data?.data));
+        toast.success("Cambios guardados");
+        setArchivosTemporales([]);
       } catch (error) {
         catchErrors(error, toast);
       } finally {
-        setLoading(false);
+        setLoadingGuardarProyecto(false);
       }
     } else {
       try {
-        setLoading(true);
+        setLoadingGuardarProyecto(true);
         const response = await ProyectoService.store(values);
         toast.success("Registro creado");
         navigate("/");
       } catch (error) {
         catchErrors(error, toast);
       } finally {
-        setLoading(false);
+        setLoadingGuardarProyecto(false);
       }
     }
   };
@@ -145,5 +172,13 @@ export const useProyectosForm = () => {
     }
   }, []);
 
-  return { validationSchema, defaultValues, guardarProyecto, loading };
+  return {
+    validationSchema,
+    defaultValues,
+    guardarProyecto,
+    loading,
+    loadingGuardarProyecto,
+    archivosTemporales,
+    setArchivosTemporales
+  };
 };

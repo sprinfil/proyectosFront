@@ -11,8 +11,8 @@ export const CrearProyectoScreen = () => {
     <>
       <BreadCrumb
         screens={[
-          { nombre: "Proyectos", url: "/" },
-          { nombre: "Crear proyecto", url: "/crearProyecto" },
+          { nombre: "Proyectos", url: "/proyectos" },
+          { nombre: "Crear proyecto", url: "crearProyecto" },
         ]}
       />
       {/* <ProyectosForm /> */}

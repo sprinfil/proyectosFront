@@ -4,6 +4,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { PaginationSpl } from "../PaginationSpl/PaginationSpl";
 import { toast } from "sonner";
+import { Plus } from "lucide-react";
 
 export function ProyectosTable() {
   const {
@@ -49,10 +50,11 @@ export function ProyectosTable() {
         <Button
           className="ml-auto"
           onClick={() => {
-            navigate("/crearProyecto");
+            navigate("crearProyecto");
           }}
         >
           Crear Proyecto
+          <Plus />
         </Button>
       </div>
       <DataTable data={data} columns={columns} loading={loading} meta={meta} />

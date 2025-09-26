@@ -51,5 +51,6 @@ export const createProyectoAdapter = (apiResponse: any) => {
       expediente.beneficiarios_afromexicana || 0
     ),
     adjuntos: apiResponse?.adjuntos,
+    archivos: apiResponse?.adjuntos,
   };
 };

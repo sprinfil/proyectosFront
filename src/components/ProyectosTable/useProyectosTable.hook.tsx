@@ -1,6 +1,6 @@
 import { type ColumnDef } from "@tanstack/react-table";
 import { Button } from "../ui/button";
-import { Eye } from "lucide-react";
+import { Download, Eye } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ProyectoService } from "../../utils/services/ProyectoService";
@@ -51,12 +51,15 @@ export const useProyectosTable = () => {
       cell: ({ row }) => {
         return (
           <>
-            <div className="flex items-center">
+            <div className="flex items-center gap-2">
               <Button
                 className="ml-auto"
-                onClick={() => navigate("/verProyecto/" + row.original.id)}
+                onClick={() => navigate("verProyecto/" + row.original.id)}
               >
                 <Eye />
+              </Button>
+              <Button className="">
+                Ficha Técnica <Download />
               </Button>
             </div>
           </>

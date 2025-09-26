@@ -1,10 +1,12 @@
 import React from "react";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { LoaderButton } from "../LoaderButton/LoaderButton";
+import type { VariantProps } from "class-variance-authority";
 
 interface SharedButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  texto: string;
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  texto: any;
   loading?: boolean;
 }
 

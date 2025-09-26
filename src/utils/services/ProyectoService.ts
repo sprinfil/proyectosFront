@@ -28,9 +28,17 @@ export const ProyectoService = {
       throw error;
     }
   },
-  update: async (id: number, values: Proyecto) => {
+  update: async (id: any, values: Proyecto) => {
     try {
       const response = await axiosClient.put("/proyectos/" + id, values);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  },
+    updatePost: async (id: any, formData: FormData) => {
+    try {
+      const response = await axiosClient.post("/proyectos/update/" + id, formData);
       return response;
     } catch (error) {
       throw error;
