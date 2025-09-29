@@ -32,7 +32,7 @@ export const useBancoProyectosTableData = () => {
       //   <div className="capitalize">{row.getValue("status")}</div>
       // ),
     },
-    
+
     {
       accessorKey: "status_nombre",
       header: "Estado",
@@ -53,6 +53,16 @@ export const useBancoProyectosTableData = () => {
       // cell: ({ row }) => (
       //   <div className="capitalize">{row.getValue("status")}</div>
       // ),
+    },
+    {
+      accessorKey: "estado",
+      header: "Estado",
+      cell: ({ row }) => {
+        let proyecto = row?.original;
+        return (
+          <div className="capitalize">{proyecto?.status_proyecto.nombre}</div>
+        );
+      },
     },
     {
       id: "actions",

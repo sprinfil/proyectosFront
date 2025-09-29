@@ -43,9 +43,12 @@ export const useProyectosTable = () => {
     {
       accessorKey: "estado",
       header: "Estado",
-      // cell: ({ row }) => (
-      //   <div className="capitalize">{row.getValue("status")}</div>
-      // ),
+      cell: ({ row }) => {
+        let proyecto = row?.original;
+        return (
+          <div className="capitalize">{proyecto?.status_proyecto.nombre}</div>
+        );
+      },
     },
     {
       id: "actions",
