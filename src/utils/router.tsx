@@ -5,8 +5,14 @@ import { DefaultLayout } from "../components/DefaultLayout/DefaultLayout";
 import { VerProyecto } from "../screens/Proyectos/VerProyecto/VerProyecto.screen";
 import { AuthLayout } from "../components/AuthLayout/AuthLayout";
 import { Login } from "../components/Login/Login";
+import { BancoProyectos } from "../screens/Proyectos/BancoProyectos/BancoProyectos";
+
 
 const router = createBrowserRouter([
+  {
+    path: "/bancoProyectos",
+    element: <BancoProyectos />,
+  },
   {
     path: "/",
     element: <AuthLayout />,
@@ -15,23 +21,23 @@ const router = createBrowserRouter([
         index: true,
         element: <Login />,
       },
+    ],
+  },
+  {
+    path: "/proyectos",
+    element: <DefaultLayout />,
+    children: [
       {
-        path: "/proyectos",
-        element: <DefaultLayout />,
-        children: [
-          {
-            index: true,
-            element: <ProyectosTableScreen />,
-          },
-          {
-            path: "crearProyecto",
-            element: <CrearProyectoScreen />,
-          },
-          {
-            path: "verProyecto/:id",
-            element: <VerProyecto />,
-          },
-        ],
+        index: true,
+        element: <ProyectosTableScreen />,
+      },
+      {
+        path: "crearProyecto",
+        element: <CrearProyectoScreen />,
+      },
+      {
+        path: "verProyecto/:id",
+        element: <VerProyecto />,
       },
     ],
   },

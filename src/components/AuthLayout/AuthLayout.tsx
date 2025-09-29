@@ -1,10 +1,13 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 export const AuthLayout = () => {
-  return (
-    <>
-      <Outlet />
-    </>
-  );
+  if (localStorage.getItem("ACCESS_TOKEN")) {
+    return <Navigate to="/proyectos" />;
+  } else {
+    return (
+      <>
+        <Outlet />
+      </>
+    );
+  }
 };

@@ -1,14 +1,13 @@
 import { type ColumnDef } from "@tanstack/react-table";
 import { Button } from "../ui/button";
-import { Download, Eye } from "lucide-react";
+import { Eye } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ProyectoService } from "../../utils/services/ProyectoService";
 import { createAdapterMeta } from "../../utils/adapters/MetaAdapter";
-import { useGenerarPdf } from "../../utils/hooks/Proyecto/useGenerarPdf";
 import { ButtonGenerarFichaTecnica } from "../ButtonGenerarFichaTecnica/ButtonGenerarFichaTecnica";
 
-export const useProyectosTable = () => {
+export const useBancoProyectosTableData = () => {
   const navigate = useNavigate();
 
   const columns: ColumnDef<any>[] = [
@@ -27,22 +26,30 @@ export const useProyectosTable = () => {
       // ),
     },
     {
-      accessorKey: "asignado_nombre",
-      header: "Encargado",
-      // cell: ({ row }) => (
-      //   <div className="capitalize">{row.getValue("status")}</div>
-      // ),
-    },
-    {
       accessorKey: "fecha_ingreso",
       header: "Fecha de ingreso",
       // cell: ({ row }) => (
       //   <div className="capitalize">{row.getValue("status")}</div>
       // ),
     },
+    
     {
-      accessorKey: "estado",
+      accessorKey: "status_nombre",
       header: "Estado",
+      // cell: ({ row }) => (
+      //   <div className="capitalize">{row.getValue("status")}</div>
+      // ),
+    },
+    {
+      accessorKey: "tipo_recurso_nombre",
+      header: "Tipo de recurso",
+      // cell: ({ row }) => (
+      //   <div className="capitalize">{row.getValue("status")}</div>
+      // ),
+    },
+    {
+      accessorKey: "no_licitaciones",
+      header: "Número de licitaciones",
       // cell: ({ row }) => (
       //   <div className="capitalize">{row.getValue("status")}</div>
       // ),
@@ -54,12 +61,12 @@ export const useProyectosTable = () => {
         return (
           <>
             <div className="flex items-center gap-2">
-              <Button
+              {/* <Button
                 className="ml-auto"
                 onClick={() => navigate("verProyecto/" + row.original.id)}
               >
                 <Eye />
-              </Button>
+              </Button> */}
               <ButtonGenerarFichaTecnica id={row?.original?.id} />
             </div>
           </>

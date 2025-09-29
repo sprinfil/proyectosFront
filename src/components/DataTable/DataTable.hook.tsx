@@ -55,5 +55,5 @@ export type DataTable<TData> = {
   columns: ColumnDef<TData, any>[];
   loading: boolean;
   meta: Object;
-  setMeta: Function;
+  setMeta?: Function;
 };

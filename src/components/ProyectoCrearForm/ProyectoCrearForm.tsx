@@ -15,6 +15,7 @@ import { localidades } from "../../utils/services/localidades";
 import { municipios } from "../../utils/services/municipios";
 import LoaderHorizontal from "../LoaderHorizontal/LoaderHorizontal";
 import { Download } from "lucide-react";
+import { ButtonGenerarFichaTecnica } from "../ButtonGenerarFichaTecnica/ButtonGenerarFichaTecnica";
 
 export const ProyectoCrearForm = () => {
   const {
@@ -39,14 +40,9 @@ export const ProyectoCrearForm = () => {
       >
         {id && (
           <>
-            <SharedButton
-              className="mb-3 ml-1"
-              texto={
-                <>
-                  Ficha Técnica <Download />
-                </>
-              }
-            ></SharedButton>
+            <div className="mb-5">
+              <ButtonGenerarFichaTecnica id={id} />
+            </div>
           </>
         )}
         <Formik

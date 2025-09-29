@@ -1,6 +1,4 @@
 import { flexRender } from "@tanstack/react-table";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 import {
   Table,
   TableBody,
@@ -10,7 +8,6 @@ import {
   TableRow,
 } from "../ui/table";
 import { useDataTableHook, type DataTable } from "./DataTable.hook";
-import { PaginationSpl } from "../PaginationSpl/PaginationSpl";
 import LoaderHorizontal from "../LoaderHorizontal/LoaderHorizontal";
 
 export function DataTable<TData>({

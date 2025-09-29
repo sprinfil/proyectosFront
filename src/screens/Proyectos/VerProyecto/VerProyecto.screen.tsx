@@ -24,10 +24,10 @@ export const VerProyecto = () => {
         <TabsList>
           <TabsTrigger value="fichaTecnica">Ficha Técnica</TabsTrigger>
           <TabsTrigger value="expedienteTecnico">Expediente Técnico</TabsTrigger>
-          <TabsTrigger value="licitaciones">Licitaciones</TabsTrigger>
-          <TabsTrigger value="Contratos">Contratos</TabsTrigger>
+          {/* <TabsTrigger value="licitaciones">Licitaciones</TabsTrigger> */}
+          {/* <TabsTrigger value="Contratos">Contratos</TabsTrigger>
           <TabsTrigger value="avanceFisico">Avance Fisico</TabsTrigger>
-          <TabsTrigger value="avanceFinanciero">Avance financiero</TabsTrigger>
+          <TabsTrigger value="avanceFinanciero">Avance financiero</TabsTrigger> */}
         </TabsList>
         <TabsContent value="fichaTecnica">
           <ProyectoCrearForm />
