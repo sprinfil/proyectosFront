@@ -14,7 +14,6 @@ import {
 import { localidades } from "../../utils/services/localidades";
 import { municipios } from "../../utils/services/municipios";
 import LoaderHorizontal from "../LoaderHorizontal/LoaderHorizontal";
-import { Download } from "lucide-react";
 import { ButtonGenerarFichaTecnica } from "../ButtonGenerarFichaTecnica/ButtonGenerarFichaTecnica";
 
 export const ProyectoCrearForm = () => {

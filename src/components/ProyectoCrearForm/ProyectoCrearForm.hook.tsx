@@ -65,7 +65,7 @@ export const useProyectoCrearForm = () => {
       //   });
       // }
       if (id) {
-        await ProyectoService.update(id, values);
+        await ProyectoService.updatePost(id, formData);
         toast.success("Registro guardado");
       } else {
         await ProyectoService.store(formData);
