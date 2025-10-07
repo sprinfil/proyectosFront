@@ -52,5 +52,11 @@ export const createProyectoAdapter = (apiResponse: any) => {
     ),
     adjuntos: apiResponse?.adjuntos,
     archivos: apiResponse?.adjuntos,
+    objetivo: apiResponse?.objetivo,
+    no_etapas: apiResponse?.no_etapas,
+    coords: {
+      lat: apiResponse?.coords?.lat,
+      lng: apiResponse?.coords?.lng,
+    },
   };
 };

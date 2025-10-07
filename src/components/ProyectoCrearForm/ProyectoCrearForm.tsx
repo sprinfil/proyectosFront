@@ -15,6 +15,7 @@ import { localidades } from "../../utils/services/localidades";
 import { municipios } from "../../utils/services/municipios";
 import LoaderHorizontal from "../LoaderHorizontal/LoaderHorizontal";
 import { ButtonGenerarFichaTecnica } from "../ButtonGenerarFichaTecnica/ButtonGenerarFichaTecnica";
+import MapaGoogle from "../MapaGoogle/MapaGoogle";
 
 export const ProyectoCrearForm = () => {
   const {
@@ -37,13 +38,14 @@ export const ProyectoCrearForm = () => {
           loadingConsultandoProyecto ? "opacity-70 pointer-none" : ""
         }`}
       >
-        {id && (
+        {/* {id && (
           <>
             <div className="mb-5">
               <ButtonGenerarFichaTecnica id={id} />
             </div>
           </>
-        )}
+        )} */}
+
         <Formik
           initialValues={defaultValues}
           validationSchema={validationSchema}
@@ -56,27 +58,7 @@ export const ProyectoCrearForm = () => {
             return (
               <Form>
                 <Card className="px-5">
-                  {/* <CardTitle className="text-2xl">Expediente técnico</CardTitle> */}
-                  {/* <div className="grid grid-cols-2 gap-2">
-               <div className="flex flex-col gap-2">
-                <p>Archivo</p>
-                <Field name="archivos">
-                  {({ field, form }: { field: any; form: any }) => (
-                    <Dropzone
-                      set={(archivos: any) => {
-                        form.setFieldValue(field.name, archivos);
-                      }}
-                    />
-                  )}
-                </Field>
-                <ErrorMessage
-                  name="archivos"
-                  component="span"
-                  className="text-red-500 text-sm"
-                />
-              </div> 
-            </div> */}
-                  <div className="grid grid-cols-4 gap-2">
+                  <div className="grid grid-cols-2 gap-2">
                     <div className="flex flex-col gap-2">
                       <p>Nombre de la obra/acción</p>
                       <Field
@@ -91,27 +73,68 @@ export const ProyectoCrearForm = () => {
                       />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <p>Programa</p>
+                      <p>Descripción</p>
                       <Field
                         as={Textarea}
-                        name="nombre_programa"
-                        placeholder="Programa"
+                        name="descripcion"
+                        placeholder="Descripcion"
                       />
                       <ErrorMessage
-                        name="nombre_programa"
+                        name="descripcion"
                         component="span"
                         className="text-red-500 text-sm"
                       />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <p>Apartado</p>
+                      <p>Objetivo</p>
                       <Field
-                        as={Input}
-                        name="apartado"
-                        placeholder="Apartado"
+                        as={Textarea}
+                        name="objetivo"
+                        placeholder="Objetivo"
                       />
                       <ErrorMessage
-                        name="apartado"
+                        name="objetivo"
+                        component="span"
+                        className="text-red-500 text-sm"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <p>Problemática</p>
+                      <Field
+                        as={Textarea}
+                        name="problematica"
+                        placeholder="Problemática"
+                      />
+                      <ErrorMessage
+                        name="problematica"
+                        component="span"
+                        className="text-red-500 text-sm"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <p>Costo total</p>
+                      <Field
+                        as={Input}
+                        name="costo_total"
+                        placeholder="Costo total"
+                        type="number"
+                      />
+                      <ErrorMessage
+                        name="costo_total"
+                        component="span"
+                        className="text-red-500 text-sm"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <p>Número de etapas</p>
+                      <Field
+                        as={Input}
+                        name="no_etapas"
+                        placeholder="Número de etapas"
+                        type="number"
+                      />
+                      <ErrorMessage
+                        name="no_etapas"
                         component="span"
                         className="text-red-500 text-sm"
                       />
@@ -167,7 +190,26 @@ export const ProyectoCrearForm = () => {
                       />
                     </div>
                   </div>
+                  ,
+                  <MapaGoogle
+                    center={
+                      values.coords ?? {
+                        lat: 24.140763784601624,
+                        lng: -110.31351956944061,
+                      }
+                    }
+                    setPosition={(position: any) => {
+                      setFieldValue("coords", position);
+                    }}
+                    defaultPosition={values.coords}
+                  />
+                  <ErrorMessage
+                    name="coords"
+                    component="span"
+                    className="text-red-500 text-sm"
+                  />
                 </Card>
+
                 <div className="w-full flex items-center justify-center">
                   <div className="w-full flex justify-end">
                     <SharedButton
@@ -185,3 +227,28 @@ export const ProyectoCrearForm = () => {
     </>
   );
 };
+
+{
+  /* <CardTitle className="text-2xl">Expediente técnico</CardTitle> */
+}
+{
+  /* <div className="grid grid-cols-2 gap-2">
+<div className="flex flex-col gap-2">
+<p>Archivo</p>
+<Field name="archivos">
+{({ field, form }: { field: any; form: any }) => (
+  <Dropzone
+    set={(archivos: any) => {
+      form.setFieldValue(field.name, archivos);
+    }}
+  />
+)}
+</Field>
+<ErrorMessage
+name="archivos"
+component="span"
+className="text-red-500 text-sm"
+/>
+</div> 
+</div> */
+}

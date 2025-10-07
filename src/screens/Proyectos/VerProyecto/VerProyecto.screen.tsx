@@ -10,8 +10,13 @@ import {
 import { AvanceFisico } from "../../../components/AvanceFisico/AvanceFisico";
 import { GanttSpl } from "../../../components/GanttSpl/GanttSpl";
 import { ProyectoCrearForm } from "../../../components/ProyectoCrearForm/ProyectoCrearForm";
+import { ButtonGenerarFichaTecnica } from "../../../components/ButtonGenerarFichaTecnica/ButtonGenerarFichaTecnica";
+import { useParams } from "react-router-dom";
+import { Button } from "../../../components/ui/button";
 
 export const VerProyecto = () => {
+  const params = useParams();
+  const id = params?.id;
   return (
     <>
       <BreadCrumb
@@ -20,10 +25,20 @@ export const VerProyecto = () => {
           { nombre: "Ver Proyecto", url: "verProyecto" },
         ]}
       />
+      {id && (
+        <>
+          <div className="my-5 flex items-center gap-2">
+            <ButtonGenerarFichaTecnica id={id} />
+            <Button>Publicar Proyecto</Button>
+          </div>
+        </>
+      )}
       <Tabs defaultValue="fichaTecnica" className=" h-full ">
         <TabsList>
           <TabsTrigger value="fichaTecnica">Ficha Técnica</TabsTrigger>
-          <TabsTrigger value="expedienteTecnico">Expediente Técnico</TabsTrigger>
+          <TabsTrigger value="expedienteTecnico">
+            Expediente Técnico
+          </TabsTrigger>
           {/* <TabsTrigger value="licitaciones">Licitaciones</TabsTrigger> */}
           {/* <TabsTrigger value="Contratos">Contratos</TabsTrigger>
           <TabsTrigger value="avanceFisico">Avance Fisico</TabsTrigger>

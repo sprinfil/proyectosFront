@@ -13,6 +13,8 @@ import { useProyectosForm } from "./useProyectosForm";
 import { SharedButton } from "../SharedButton/SharedButton";
 import LoaderHorizontal from "../LoaderHorizontal/LoaderHorizontal";
 import Dropzone from "../Dropzone/Dropzone";
+import { localidades } from "../../utils/services/localidades";
+import { municipios } from "../../utils/services/municipios";
 
 export const ProyectosForm = () => {
   const {
@@ -40,7 +42,7 @@ export const ProyectosForm = () => {
           {({ setFieldValue, values }) => (
             <Form>
               <div className="w-full h-full flex flex-col gap-4">
-                {/* <Card className="px-5">
+                <Card className="px-5">
                   <CardTitle className="text-2xl">Expediente técnico</CardTitle>
                   <div className="grid grid-cols-4 gap-2">
                     <div className="flex flex-col gap-2">
@@ -133,7 +135,7 @@ export const ProyectosForm = () => {
                       />
                     </div>
                   </div>
-                </Card> */}
+                </Card>
                 <Card className="px-5">
                   <CardTitle className="text-2xl">Carátula única</CardTitle>
                   <div className="grid grid-cols-4 gap-2">

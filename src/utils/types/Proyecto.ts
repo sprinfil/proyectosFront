@@ -42,4 +42,7 @@ export type Proyecto = {
   beneficiarios_indigenas?: number;
   beneficiarios_afromexicana?: number;
   archivos?: [];
+  objetivo: string;
+  no_etapas: number;
+  coords: { lat: number; lng: number } | null;
 };
