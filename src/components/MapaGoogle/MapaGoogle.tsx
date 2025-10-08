@@ -21,7 +21,6 @@ export default function MapaGoogle({
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyAnqFPxn8eq_QFwi9HES_LbnyuNmnhf2rA",
   });
-
   const [markerPosition, setMarkerPosition] = useState<{
     lat: number;
     lng: number;
@@ -40,6 +39,12 @@ export default function MapaGoogle({
       setPosition(markerPosition);
     }
   }, [markerPosition]);
+
+  useEffect(() => {
+    if (defaultPosition && defaultPosition.lat && defaultPosition.lng) {
+      setMarkerPosition(defaultPosition);
+    }
+  }, [defaultPosition]);
 
   if (!isLoaded) return <div>Cargando mapa...</div>;
 

@@ -14,7 +14,6 @@ import {
 import { localidades } from "../../utils/services/localidades";
 import { municipios } from "../../utils/services/municipios";
 import LoaderHorizontal from "../LoaderHorizontal/LoaderHorizontal";
-import { ButtonGenerarFichaTecnica } from "../ButtonGenerarFichaTecnica/ButtonGenerarFichaTecnica";
 import MapaGoogle from "../MapaGoogle/MapaGoogle";
 
 export const ProyectoCrearForm = () => {
@@ -38,14 +37,6 @@ export const ProyectoCrearForm = () => {
           loadingConsultandoProyecto ? "opacity-70 pointer-none" : ""
         }`}
       >
-        {/* {id && (
-          <>
-            <div className="mb-5">
-              <ButtonGenerarFichaTecnica id={id} />
-            </div>
-          </>
-        )} */}
-
         <Formik
           initialValues={defaultValues}
           validationSchema={validationSchema}
@@ -190,7 +181,6 @@ export const ProyectoCrearForm = () => {
                       />
                     </div>
                   </div>
-                  ,
                   <MapaGoogle
                     center={
                       values.coords ?? {
@@ -251,4 +241,14 @@ className="text-red-500 text-sm"
 />
 </div> 
 </div> */
+}
+
+{
+  /* {id && (
+          <>
+            <div className="mb-5">
+              <ButtonGenerarFichaTecnica id={id} />
+            </div>
+          </>
+        )} */
 }

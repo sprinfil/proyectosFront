@@ -63,7 +63,11 @@ export const useProyectoCrearForm = () => {
 
       Object.entries(values).forEach(([clave, valor]) => {
         if (valor !== undefined && valor !== null) {
-          formData.append(clave, String(valor));
+          if (typeof valor === "object" && !(valor instanceof File)) {
+            formData.append(clave, JSON.stringify(valor));
+          } else {
+            formData.append(clave, String(valor));
+          }
         }
       });
 

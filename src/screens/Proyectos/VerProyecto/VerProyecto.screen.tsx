@@ -29,7 +29,7 @@ export const VerProyecto = () => {
         <>
           <div className="my-5 flex items-center gap-2">
             <ButtonGenerarFichaTecnica id={id} />
-            <Button>Publicar Proyecto</Button>
+            {/* <Button>Publicar Proyecto</Button> */}
           </div>
         </>
       )}
